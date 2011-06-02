@@ -1,0 +1,47 @@
+<html>
+<head>
+	<title>add a note</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/srbag.css" />
+    <script type="text/javascript">
+        navigator.geolocation.getCurrentPosition(getLocation, unknownLocation);
+        function getLocation(position) {
+            var lat = position.coords.latitude;
+            var lon = position.coords.longitude;
+            var el = document.getElementById('current_location');
+            if (el) {
+                el.innerHTML = "lat: "+lat+", lon: "+lon;
+            }
+            var current_lat = document.getElementById('current_lat');
+            var current_lon = document.getElementById('current_lon');
+            current_lat.value = lat;
+            current_lon.value = lon;
+        }
+        function unknownLocation() {
+            var el = document.getElementById('current_location');
+            el.innerHTML = "location not found";
+        }
+    </script>
+</head>
+
+<body bgcolor="black" text="white">
+    <div style="padding-top:10px;text-align:center">
+        {% if (status == 'success') %}
+            Added note!
+        {% elif (status == 'failed') %}
+            Sorry, couldn't add note
+        {% end %}
+    </div>
+	<div style="padding-top:20px;text-align:center">
+        <form action="/beacon/add" method="post">
+            <div id="current_location">Getting location...</div>
+            <div>Note: <input type="textarea" name="note_text"></textarea></div>
+            <div>Max distance: <input type="text" name="max_distance"/></div>
+            <div>
+                <input id="current_lat" type="hidden" name="lat" value="">
+                <input id="current_lon" type="hidden" name="lon" value="">
+                <input type="submit" value="Submit"/>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

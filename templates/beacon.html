@@ -1,0 +1,29 @@
+<html>
+<head>
+	<title>my current location</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/srbag.css" />
+</head>
+
+<body bgcolor="black" text="white">
+	<div style="padding-top:55;text-align:center">
+		<div class="p_five_t">
+			<img src="{{map_url}}"/>
+		<div>
+    </div>
+    {% if nearby_notes %}
+    <div style="padding-top:15;">
+        {% for n in nearby_notes %}
+            {{ n.get('text') }}<br/>
+        {% end %}
+    </div>
+    {% end %}
+    {% if nearby_places %}
+	<div style="padding-top:15;">
+	    Nearby places:<br/>
+        {% for p in nearby_places %}
+            {{p.get('name')}}, {{p.get('location').get('distance')}}m<br/>
+        {% end %}
+    </div>
+    {% end %}
+</body>
+</html>
