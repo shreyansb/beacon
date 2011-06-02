@@ -10,10 +10,6 @@ from lib import better_http
 
 from model.Kv import Kv
 
-LAT_LON_OF_HOME = (39.952288, -75.174189)
-LAT_LON_OF_OFFICE = (39.94939, -75.175)
-LAT_LON_OF_ASHA = (37.43137, -122.168924)
-
 def get_current_city():
     return get_current_location(return_map_url=True, granularity='city')
 
