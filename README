@@ -1,3 +1,8 @@
+Beacon is a location-based reminder service. You hook up your Google Latitude account and set a reminder for a latitude and longitude. When you're close to the location, Beacon will send you an SMS with the reminder.
+
+I used it to send myself shopping lists when I was close to CVS. Never be without toilet paper again!
+
 Worked well when Latitude, cron, Twilio and AT&T were able to beat my walking speed.
 Weekend project.
+
 Uses: Latitude, Twilio, cron, MongoDB, Tornado
